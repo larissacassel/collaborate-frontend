@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Collaborate",
+    "slug": "snack-808c50f5-246f-43fa-949c-13c5b73f7c9b",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logoapp.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.larissacassel.gbcollaborate"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
