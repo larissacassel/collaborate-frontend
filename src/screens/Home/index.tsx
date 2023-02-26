@@ -26,7 +26,7 @@ interface languagesProps {
 export default function Home({navigation}: {navigation:any}){
 
   const [loading, setLoading] = useState(true);
-  const [environmentSelected, setEnvironmentSelected] = useState('all');
+  const [languageSelected, setLanguageSelected] = useState('all');
   const [languages, setLanguages] = useState<languagesProps[]>();
   const [repos, setRepos] = useState<RepositoriesProps[]>([]);
 
@@ -38,20 +38,17 @@ export default function Home({navigation}: {navigation:any}){
  async function fetchLanguages() {
     return api.get("/languages")
     .then((response: any) => {
-      setLoading(false) 
       setLanguages(response.data)
-      if(environmentSelected === 'all'){
-        setEnvironmentSelected('javascript')
-        getRepositories('javascript')
-      }
+      setLoading(false) 
+      handleLanguageSelected(response.data[0].title)
     })
     .catch((err) => {
+      setLoading(false) 
       Alert.alert("ops! ocorreu um erro")
    });
   }
 
-  function getRepositories(language:string) {
-
+  function fetchRepositories(language:string) {
     api.get(`/repos/${language}`)
     .then((response: any) => {
       setRepos(response.data)
@@ -62,12 +59,13 @@ export default function Home({navigation}: {navigation:any}){
     
   }
 
-  function handleEnvironmentSelected(environment: string) {
-    setEnvironmentSelected(environment);
-    getRepositories(environment)
+  function handleLanguageSelected(language: string) {
+    setLanguageSelected(language);
+    fetchRepositories(language)
   }
 
 
+  //TODO - TELA DE DETALHES
   function handleRepositoriesDetails(){
       navigation.navigate('EditFriend', {editScreen: true}); 
   }
@@ -90,8 +88,8 @@ export default function Home({navigation}: {navigation:any}){
           renderItem={({ item }) => (
             <EnvironmentButton 
               title={item.title}
-              active={item.title === environmentSelected}
-              onPress={() => handleEnvironmentSelected(item.title)}
+              active={item.title === languageSelected}
+              onPress={() => handleLanguageSelected(item.title)}
             />
           )}
           horizontal

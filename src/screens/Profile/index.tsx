@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import api from '../../services/api'
@@ -40,16 +40,11 @@ export default function Profile(){
 
         <Header title = "Perfil" />
 
-        <ImageBackground source = {{uri: userData?.avatar}} style = {styles.backgorund}>
-              <View style = {styles.subHeader}>
+        <View style = {styles.contain}>
+            <Image style = {styles.avatar} source={{uri: userData?.avatar}} />
+            <Text style = {styles.userName} >{userData?.userName}</Text>
+        </View>
 
-                        <Text style = {styles.nameText} >
-                            {userData?.userName}
-                        </Text>  
-
-              </View>
-              
-        </ImageBackground>
 
       </View>
   )

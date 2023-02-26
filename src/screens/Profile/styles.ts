@@ -11,24 +11,21 @@ export const styles = StyleSheet.create({
     alignItems:"center",
     marginVertical:30
   },
-  subHeader:{
-    flexDirection: 'row',
-    width,
-    paddingHorizontal: 20,
-    justifyContent: 'flex-end',
-    alignItems: "center"
-  },
-  contain:{
-    flex: 1
-  },
-  nameText:{
-    fontSize: 30,
-    color: theme.colors.white,
-    fontWeight: 'bold'
-  },
-  backgorund:{
-    height: height / 2,
-    justifyContent: 'flex-end',
-    marginTop: 10
-  }
+ contain: {
+  backgroundColor: '#eae1ed', 
+  width: '100%',
+  height: 200,  
+  flexDirection: 'row', 
+  alignItems: 'center'
+ },
+ avatar: {
+  height: 100, 
+  width: 100, 
+  marginHorizontal: 10, 
+  borderRadius: 50
+ },
+ userName: {
+  fontSize: 20, 
+  fontWeight: 'bold'
+ }
 });
